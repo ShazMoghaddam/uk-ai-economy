@@ -5,6 +5,11 @@ arrives as its own pull request from the Refresh data workflow.
 
 Versions are dated by month, like `v2026.11`.
 
+## Unreleased
+
+- Social preview image in `assets/social-preview.png`, drawn from the real AI use figures, so shared links show a
+  proper card
+
 ## v2026.11 · November 2026
 
 The launch.
