@@ -1,0 +1,18 @@
+# Submissions: link to the source data instead of committing it
+*.csv
+*.xlsx
+*.zip
+# The project's own tidy data files are small and kept, so charts can be rebuilt offline
+!data/*.csv
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.pytest_cache/
+
+# Charts made by running a starter script from the repo root
+/*.svg
+
+# macOS
+.DS_Store

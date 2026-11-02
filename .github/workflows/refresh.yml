@@ -1,0 +1,58 @@
+name: Refresh data
+
+# ONS publishes a new wave of the Business Insights and Conditions Survey every two weeks, and the AI
+# questions come round every sixth wave, about once a quarter. This checks every Friday morning and, if a
+# new AI wave is out, opens a pull request with the new data, redrawn charts and an updated report, ready
+# to review and merge. Nothing is pushed to main directly.
+on:
+  schedule:
+    - cron: "23 9 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt pytest
+      - name: Download the latest figures
+        run: python data/fetch.py
+      - name: Redraw charts and rewrite the report
+        run: python findings/build.py
+      - name: Check the results
+        run: pytest -q
+      - name: Find the latest wave
+        id: wave
+        run: echo "label=$(python -c "import json; print(json.load(open('data/sources.json'))['wave'])")" >> "$GITHUB_OUTPUT"
+      - name: Open a pull request if anything changed
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: data/refresh
+          delete-branch: true
+          # fetch.py leaves every file untouched until a new AI wave comes out, so this only opens a
+          # pull request when there's genuinely new data.
+          add-paths: |
+            data/*.csv
+            data/sources.json
+            charts/*.svg
+            findings/README.md
+            README.md
+          commit-message: "Update data and charts to BICS wave ${{ steps.wave.outputs.label }}"
+          title: "Update data and charts to BICS wave ${{ steps.wave.outputs.label }}"
+          body: |
+            New figures from the ONS. This pull request was opened automatically by the **Refresh data** workflow.
+
+            - Downloaded the latest data with `data/fetch.py`
+            - Redrew every chart, rewrote the [State of AI in UK business](findings/README.md) report and refreshed the key findings in the README with `findings/build.py`
+            - Ran the checks in `tests/`
+
+            Have a quick look at the report and charts, then merge.
+          labels: data

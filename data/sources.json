@@ -1,0 +1,76 @@
+{
+  "fetched": "2026-11-02 09:28 UTC",
+  "survey": "ONS Business Insights and Conditions Survey (BICS)",
+  "wave": 165,
+  "released": "8 October 2026",
+  "file": "https://www.ons.gov.uk/file?uri=/economy/economicoutputandproductivity/output/datasets/businessinsightsandimpactontheukeconomy/bicswave165/bicswave1652final.xlsx",
+  "dataset": "https://www.ons.gov.uk/economy/economicoutputandproductivity/output/datasets/businessinsightsandimpactontheukeconomy",
+  "licence": "Open Government Licence v3.0",
+  "credit": "Source: Office for National Statistics licensed under the Open Government Licence v3.0.",
+  "files": {
+    "ai_use": {
+      "description": "Which AI technologies businesses currently use",
+      "base": "Businesses not permanently stopped trading",
+      "sheet": "AI Current Usage TS (WTD)",
+      "weighted": true,
+      "first": "2023-09",
+      "last": "2026-09",
+      "waves": 13
+    },
+    "ai_plans": {
+      "description": "Which AI technologies businesses plan to adopt in the next three months",
+      "base": "Businesses not permanently stopped trading",
+      "sheet": "AI Plan to Adopt TS (WTD)",
+      "weighted": true,
+      "first": "2023-09",
+      "last": "2026-09",
+      "waves": 13
+    },
+    "ai_barriers": {
+      "description": "Factors that prevented or delayed AI adoption in the last three months",
+      "base": "Businesses not permanently stopped trading",
+      "sheet": "AI Prevent or Delayed TS (WTD)",
+      "weighted": true,
+      "first": "2023-09",
+      "last": "2026-09",
+      "waves": 13
+    },
+    "ai_extent": {
+      "description": "How much businesses use AI in their operations",
+      "base": "Businesses using AI, or not sure if they are",
+      "sheet": "AI Extent Use TS (WTD)",
+      "weighted": true,
+      "first": "2026-06",
+      "last": "2026-09",
+      "waves": 2
+    },
+    "ai_adoption_route": {
+      "description": "How businesses adopted the AI they use",
+      "base": "Businesses using AI, or not sure if they are",
+      "sheet": "AI How Adopted TS (WTD)",
+      "weighted": true,
+      "first": "2023-09",
+      "last": "2026-09",
+      "waves": 13
+    },
+    "ai_headcount": {
+      "description": "What AI has done to the business's overall headcount",
+      "base": "Businesses using AI, or not sure if they are",
+      "sheet": "AI Impact on Headcount TS (WTD)",
+      "weighted": true,
+      "first": "2025-09",
+      "last": "2026-09",
+      "waves": 5
+    },
+    "ai_by_region": {
+      "description": "Which AI technologies businesses currently use, by nation and region",
+      "base": "Businesses that answered and are not permanently stopped trading",
+      "sheet": "Artificial Intelligence (1)",
+      "weighted": false,
+      "note": "Unweighted, and a business counts in every region it trades in. Compare regions with each other, not with the weighted UK figures.",
+      "first": "2026-09",
+      "last": "2026-09",
+      "waves": 1
+    }
+  }
+}
